@@ -18,8 +18,3 @@ jobs:
           golangci_lint_flags: "--config=./.golangci.yaml ./..."
           fail_on_error: true
           reporter: "github-pr-review"
-
-
-
-  
-          
