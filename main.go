@@ -14,6 +14,7 @@ import (
 func main() {
 	if len(os.Args) != 2 {
 		log.Printf("need port number %d %s \n", len(os.Args), os.Args[0])
+		log.Printf("need port number %d %s \n", len(os.Args), os.Args[0])
 		os.Exit(1)
 	}
 	p := os.Args[1]
