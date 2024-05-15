@@ -5,14 +5,13 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
-	"net.http"
 )
 
 func TestNewMux(t *testing.T) {
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodGet, "/health", nil)
 	sut := NewMux()
+	sut.ServeHTTP(w, r)
 	resp := w.Result()
 	t.Cleanup(func() { _ = resp.Body.Close() })
 
@@ -24,7 +23,7 @@ func TestNewMux(t *testing.T) {
 		t.Fatalf("failed to read body: %v", err)
 	}
 
-	want := `{"status": " ok"}`
+	want := `{"status": "ok"}`
 	if string(got) != want {
 		t.Errorf("want %q, but got %q", want, got)
 	}
